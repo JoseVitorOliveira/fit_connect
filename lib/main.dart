@@ -1,4 +1,6 @@
-import 'package:fit_connect/screens/splash_screen.dart';
+/* import 'package:fit_connect/screens/home.dart';
+import 'package:fit_connect/screens/splash_screen.dart'; */
+import 'package:fit_connect/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: SignIn(),
     );
   }
 }

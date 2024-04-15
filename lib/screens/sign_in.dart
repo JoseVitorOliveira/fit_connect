@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SignIn extends StatefulWidget {
+  const SignIn({super.key});
+
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<SignIn> {
+class LoginScreenState extends State<SignIn> {
   bool _rememberMe = false;
 
   Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
+        const Text(
           'Email',
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
-        SizedBox(height: 10.0),
+        const SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-            color: Color(0XFF6CA8F1),
+            color: const Color.fromARGB(255, 119, 209, 219),
             borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black12,
                 blurRadius: 6.0,
@@ -32,7 +35,7 @@ class _LoginScreenState extends State<SignIn> {
             ],
           ),
           height: 60.0,
-          child: TextField(
+          child: const TextField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
@@ -40,8 +43,9 @@ class _LoginScreenState extends State<SignIn> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(Icons.email, color: Colors.white),
               hintText: 'Digite seu e-mail',
-              hintStyle:
-                  TextStyle(color: Colors.white54, fontFamily: 'OpenSans'),
+              hintStyle: TextStyle(
+                  color: Color.fromARGB(255, 255, 248, 248),
+                  fontFamily: 'OpenSans'),
             ),
           ),
         ),
@@ -53,17 +57,17 @@ class _LoginScreenState extends State<SignIn> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
+        const Text(
           'Senha',
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
-        SizedBox(height: 10.0),
+        const SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-            color: Color(0XFF6CA8F1),
+            color: const Color.fromARGB(255, 119, 209, 219),
             borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black12,
                 blurRadius: 6.0,
@@ -72,16 +76,18 @@ class _LoginScreenState extends State<SignIn> {
             ],
           ),
           height: 60.0,
-          child: TextField(
+          child: const TextField(
             obscureText: true,
             style: TextStyle(color: Colors.white, fontFamily: 'OpenSans'),
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(Icons.lock, color: Colors.white),
+              prefixIcon:
+                  Icon(Icons.lock, color: Color.fromARGB(255, 255, 255, 255)),
               hintText: 'Digite sua senha',
-              hintStyle:
-                  TextStyle(color: Colors.white54, fontFamily: 'OpenSans'),
+              hintStyle: TextStyle(
+                  color: Color.fromARGB(255, 255, 248, 248),
+                  fontFamily: 'OpenSans'),
             ),
           ),
         ),
@@ -93,11 +99,12 @@ class _LoginScreenState extends State<SignIn> {
     return Container(
       alignment: Alignment.centerRight,
       child: TextButton(
-        onPressed: () => print('Botão pressionado'),
-        child: Text(
+        onPressed: () => (),
+        child: const Text(
           'Esqueceu a senha?',
           style: TextStyle(
               color: Colors.white,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               fontFamily: 'OpenSans'),
         ),
@@ -106,7 +113,7 @@ class _LoginScreenState extends State<SignIn> {
   }
 
   Widget _buildRememberMeCheckbox() {
-    return Container(
+    return SizedBox(
       height: 20.0,
       child: Row(
         children: <Widget>[
@@ -123,7 +130,7 @@ class _LoginScreenState extends State<SignIn> {
               },
             ),
           ),
-          Text(
+          const Text(
             'Manter-me logado',
             style: TextStyle(
                 color: Colors.white,
@@ -137,11 +144,18 @@ class _LoginScreenState extends State<SignIn> {
 
   Widget _buildLoginBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
+      padding: const EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () => print('Botão de login pressionado'),
-        child: Text(
+        onPressed: () => (),
+        style: ElevatedButton.styleFrom(
+          elevation: 5.0,
+          padding: const EdgeInsets.all(15.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+        ),
+        child: const Text(
           'LOGIN',
           style: TextStyle(
             color: Color(0xFF527DAA),
@@ -151,36 +165,7 @@ class _LoginScreenState extends State<SignIn> {
             fontFamily: 'OpenSans',
           ),
         ),
-        style: ElevatedButton.styleFrom(
-          elevation: 5.0,
-          padding: EdgeInsets.all(15.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-        ),
       ),
-    );
-  }
-
-  Widget _buildSignInWithText() {
-    return Column(
-      children: <Widget>[
-        Text(
-          '- OU -',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        SizedBox(height: 20.0),
-        Text(
-          'Prossiga com:',
-          style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'OpenSans'),
-        ),
-      ],
     );
   }
 
@@ -196,126 +181,53 @@ class _LoginScreenState extends State<SignIn> {
               Container(
                 height: double.infinity,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    // ignore: prefer_const_literals_to_create_immutables
                     colors: [
-                      Color(0xFF73AEF5),
-                      Color(0xFF61A4F1),
-                      Color(0xFF478DE0),
-                      Color(0xFF398AE5),
+                      Color(0xff00B1C3),
+                      Color(0xff00B1C3),
+                      Color.fromARGB(255, 99, 172, 180),
+                      Color.fromARGB(255, 64, 176, 188),
                     ],
                     stops: [0.1, 0.4, 0.7, 0.9],
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: double.infinity,
                 child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 40.0, vertical: 120.0),
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 40.0, vertical: 90.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    // ignore: prefer_const_literals_to_create_immutables
                     children: <Widget>[
-                      Text(
-                        'Sign In',
+                      SvgPicture.asset(
+                        "assets/images/logo.svg",
+                        height: 70,
+                        width: 70,
+                      ),
+                      const Text(
+                        'Acesse sua conta',
                         style: TextStyle(
                             color: Colors.white,
-                            fontFamily: 'OpenSans',
+                            fontFamily: "Kanit",
                             fontSize: 30.0,
-                            fontWeight: FontWeight.bold),
+                            height: 0.30,
+                            fontWeight: FontWeight.w700),
                       ),
-                      SizedBox(height: 30.0),
+                      const SizedBox(height: 50.0),
                       _buildEmailTF(),
-                      SizedBox(
+                      const SizedBox(
                         height: 30.0,
                       ),
                       _buildPasswordTF(),
                       _buildForgotPasswordBtn(),
+                      const SizedBox(height: 30.0),
                       _buildRememberMeCheckbox(),
                       _buildLoginBtn(),
-                      _buildSignInWithText(),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 30.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            GestureDetector(
-                              onTap: () => print('Login with Facebook'),
-                              child: Container(
-                                height: 60.0,
-                                width: 60.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black26,
-                                      offset: Offset(0, 2),
-                                      blurRadius: 6.0,
-                                    ),
-                                  ],
-                                  image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/logos/facebook.jpg'),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () => print('Login with Google'),
-                              child: Container(
-                                height: 60.0,
-                                width: 60.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black26,
-                                      offset: Offset(0, 2),
-                                      blurRadius: 6.0,
-                                    ),
-                                  ],
-                                  image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/logos/google.jpg'),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () => print('Sign Up Button Pressed'),
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'Don\'t have an Account? ',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'Sign Up',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
                     ],
                   ),
                 ),
