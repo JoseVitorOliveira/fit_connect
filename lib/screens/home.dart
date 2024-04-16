@@ -71,7 +71,7 @@ class Home extends StatelessWidget {
 }
 
 class VerticalList extends StatelessWidget {
-  const VerticalList({Key? key}) : super(key: key);
+  const VerticalList({super.key});
 
   @override
   Widget build(BuildContext context) {

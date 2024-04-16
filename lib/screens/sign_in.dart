@@ -1,3 +1,4 @@
+import 'package:fit_connect/screens/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -147,7 +148,10 @@ class LoginScreenState extends State<SignIn> {
       padding: const EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () => (),
+        onPressed: () => (Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Navigation()),
+        )),
         style: ElevatedButton.styleFrom(
           elevation: 5.0,
           padding: const EdgeInsets.all(15.0),
