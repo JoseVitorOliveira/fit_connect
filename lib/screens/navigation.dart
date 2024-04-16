@@ -1,5 +1,6 @@
 import 'package:fit_connect/screens/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Navigation extends StatefulWidget {
   const Navigation({super.key});
@@ -38,8 +39,35 @@ class _BottomNavigationBarExampleState extends State<Navigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        titleTextStyle: const TextStyle(
-            color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
+        backgroundColor: const Color(0xFF00B1C3),
+        title: const Text(
+          'Fit Connect',
+          style: TextStyle(
+            color: Color(0xff006387),
+            fontFamily: "Kanit",
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        leading: Container(
+          padding: const EdgeInsets.all(8),
+          child: SvgPicture.asset(
+            "assets/images/logo.svg",
+          ),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            color: const Color(0xff006387),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.search),
+            color: const Color(0xff006387),
+            onPressed: () {},
+          ),
+        ],
+        automaticallyImplyLeading: false,
+        titleSpacing: 0,
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
