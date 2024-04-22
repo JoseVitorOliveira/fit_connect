@@ -1,6 +1,6 @@
 import 'package:fit_connect/screens/home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import "package:flutter_feather_icons/flutter_feather_icons.dart";
 
 class Navigation extends StatefulWidget {
   const Navigation({super.key});
@@ -11,16 +11,20 @@ class Navigation extends StatefulWidget {
 
 class _BottomNavigationBarExampleState extends State<Navigation> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const TextStyle optionStyle = TextStyle(
+      fontSize: 24, fontFamily: 'GothicA1', fontWeight: FontWeight.w400);
   static const List<Widget> _widgetOptions = <Widget>[
     Home(),
     Text(
-      'Agenda',
+      'Atividades',
       style: optionStyle,
     ),
     Text(
-      'Clientes',
+      'Personal',
+      style: optionStyle,
+    ),
+    Text(
+      'Academias',
       style: optionStyle,
     ),
     Text(
@@ -39,57 +43,67 @@ class _BottomNavigationBarExampleState extends State<Navigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF00B1C3),
-        title: const Text(
-          'Fit Connect',
-          style: TextStyle(
-            color: Color(0xff006387),
-            fontFamily: "Kanit",
-            fontWeight: FontWeight.w700,
-          ),
+        toolbarHeight: 70.0,
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Fit Connect',
+                  style: TextStyle(
+                      fontFamily: 'GothicA1',
+                      fontSize: 26,
+                      fontWeight: FontWeight.w600),
+                ),
+                Text(
+                  'Home',
+                  style: TextStyle(
+                      fontFamily: 'GothicA1',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Color.fromARGB(255, 112, 112, 112)),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Icon(FeatherIcons.bell),
+                SizedBox(width: 16),
+                Icon(FeatherIcons.moreHorizontal),
+              ],
+            ),
+          ],
         ),
-        leading: Container(
-          padding: const EdgeInsets.all(8),
-          child: SvgPicture.asset(
-            "assets/images/logo.svg",
-          ),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            color: const Color(0xff006387),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.search),
-            color: const Color(0xff006387),
-            onPressed: () {},
-          ),
-        ],
         automaticallyImplyLeading: false,
-        titleSpacing: 0,
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          canvasColor: const Color(0xFF00B1C3),
-        ),
+      bottomNavigationBar: SizedBox(
+        height: 70,
         child: BottomNavigationBar(
+          elevation: 10,
           showUnselectedLabels: true,
+          unselectedItemColor: Colors.black,
+          selectedItemColor: Colors.black,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home  ',
+              icon: Icon(Icons.home_filled),
+              label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today_outlined),
-              label: 'Agenda',
+              icon: Icon(Icons.lock_clock),
+              label: 'Atividades',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.people),
-              label: 'Clientes',
+              icon: Icon(Icons.directions_run),
+              label: 'Personal',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.fitness_center),
+              label: 'Academias',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
@@ -97,7 +111,7 @@ class _BottomNavigationBarExampleState extends State<Navigation> {
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.white,
+          selectedFontSize: 13,
           onTap: _onItemTapped,
         ),
       ),
