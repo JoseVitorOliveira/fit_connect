@@ -1,4 +1,4 @@
-import 'package:fit_connect/screens/sign_in.dart';
+import 'package:fit_connect/screens/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,7 +19,7 @@ class _SplashScreen extends State<SplashScreen>
 
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (_) => const SignIn(),
+        builder: (_) => Navigation(),
       ));
     });
   }

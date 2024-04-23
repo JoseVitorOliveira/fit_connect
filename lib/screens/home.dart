@@ -1,5 +1,7 @@
+import 'package:fit_connect/screens/stories_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class Home extends StatelessWidget {
   const Home({
@@ -155,7 +157,7 @@ class ActivityTwo extends StatelessWidget {
               ),
             ),
             Text(
-              "Academia das Cidades",
+              "Academia Fitness 2",
               style: TextStyle(
                   fontFamily: 'GothicA1',
                   fontWeight: FontWeight.w400,
@@ -356,18 +358,29 @@ class ProfessionalsList extends StatelessWidget {
             padding: const EdgeInsets.only(left: 12.0, right: 11.0, top: 20.0),
             child: Column(
               children: [
-                Container(
-                  width: 74,
-                  height: 74,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/mbappe.png'),
-                    ),
-                    color: const Color.fromARGB(255, 218, 218, 218),
-                    border: Border.all(
-                      color: Colors.grey[600]!,
-                      width: 2.0,
+                GestureDetector(
+                  onTap: () {
+                    PersistentNavBarNavigator.pushNewScreen(
+                      context,
+                      screen: const StoriesProfile(),
+                      withNavBar: true,
+                      pageTransitionAnimation:
+                          PageTransitionAnimation.cupertino,
+                    );
+                  },
+                  child: Container(
+                    width: 74,
+                    height: 74,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: const DecorationImage(
+                        image: AssetImage('assets/images/mbappe.png'),
+                      ),
+                      color: const Color.fromARGB(255, 218, 218, 218),
+                      border: Border.all(
+                        color: Colors.grey[600]!,
+                        width: 2.0,
+                      ),
                     ),
                   ),
                 ),

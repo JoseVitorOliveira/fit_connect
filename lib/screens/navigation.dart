@@ -1,42 +1,58 @@
-import 'package:fit_connect/screens/home.dart';
+import 'package:fit_connect/screens/profile.dart';
 import 'package:flutter/material.dart';
-import "package:flutter_feather_icons/flutter_feather_icons.dart";
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:fit_connect/screens/home.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-class Navigation extends StatefulWidget {
-  const Navigation({super.key});
+class Navigation extends StatelessWidget {
+  final PersistentTabController _controller =
+      PersistentTabController(initialIndex: 0);
 
-  @override
-  State<Navigation> createState() => _BottomNavigationBarExampleState();
-}
+  Navigation({super.key});
 
-class _BottomNavigationBarExampleState extends State<Navigation> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(
-      fontSize: 24, fontFamily: 'GothicA1', fontWeight: FontWeight.w400);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Home(),
-    Text(
-      'Atividades',
-      style: optionStyle,
-    ),
-    Text(
-      'Personal',
-      style: optionStyle,
-    ),
-    Text(
-      'Academias',
-      style: optionStyle,
-    ),
-    Text(
-      'Perfil',
-      style: optionStyle,
-    ),
-  ];
+  List<Widget> _buildScreens() {
+    return [
+      const Home(),
+      const Placeholder(), // Placeholder 'Atividades'
+      const Placeholder(), // Placeholder 'Personal'
+      const Placeholder(), // Placeholder 'Academias'
+      const Profile(), // Placeholder 'Perfil'
+    ];
+  }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.home_filled),
+        title: 'Home',
+        activeColorPrimary: Colors.black,
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.lock_clock),
+        title: 'Atividades',
+        activeColorPrimary: Colors.black,
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.directions_run),
+        title: 'Personal',
+        activeColorPrimary: Colors.black,
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.fitness_center),
+        title: 'Academias',
+        activeColorPrimary: Colors.black,
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.person),
+        title: 'Perfil',
+        activeColorPrimary: Colors.black,
+        inactiveColorPrimary: Colors.grey,
+      ),
+    ];
   }
 
   @override
@@ -53,17 +69,19 @@ class _BottomNavigationBarExampleState extends State<Navigation> {
                 Text(
                   'Fit Connect',
                   style: TextStyle(
-                      fontFamily: 'GothicA1',
-                      fontSize: 26,
-                      fontWeight: FontWeight.w600),
+                    fontFamily: 'GothicA1',
+                    fontSize: 26,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 Text(
                   'Home',
                   style: TextStyle(
-                      fontFamily: 'GothicA1',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Color.fromARGB(255, 112, 112, 112)),
+                    fontFamily: 'GothicA1',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 112, 112, 112),
+                  ),
                 ),
               ],
             ),
@@ -78,41 +96,26 @@ class _BottomNavigationBarExampleState extends State<Navigation> {
         ),
         automaticallyImplyLeading: false,
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: SizedBox(
-        height: 70,
-        child: BottomNavigationBar(
-          elevation: 10,
-          showUnselectedLabels: true,
-          unselectedItemColor: Colors.black,
-          selectedItemColor: Colors.black,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_filled),
-              label: 'Home',
+      body: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: Color.fromARGB(255, 240, 240, 240),
+              width: 0.1,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.lock_clock),
-              label: 'Atividades',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.directions_run),
-              label: 'Personal',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.fitness_center),
-              label: 'Academias',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Perfil',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedFontSize: 13,
-          onTap: _onItemTapped,
+          ),
+        ),
+        child: PersistentTabView(
+          context,
+          controller: _controller,
+          screens: _buildScreens(),
+          items: _navBarsItems(),
+          backgroundColor: Colors.white,
+          navBarHeight: 70.0,
+          navBarStyle: NavBarStyle.style6,
+          onItemSelected: (int index) {
+            _controller.jumpToTab(index);
+          },
         ),
       ),
     );
