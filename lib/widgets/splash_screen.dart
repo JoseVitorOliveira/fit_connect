@@ -1,4 +1,5 @@
-import 'package:fit_connect/screens/navigation.dart';
+import 'package:fit_connect/theme/app_pallete.dart';
+import 'package:fit_connect/widgets/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -37,7 +38,7 @@ class _SplashScreen extends State<SplashScreen>
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: Color(0xff00B1C3),
+          color: AppPallete.lightBlue,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

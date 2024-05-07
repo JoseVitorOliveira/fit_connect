@@ -1,4 +1,4 @@
-import 'package:fit_connect/screens/sign_in.dart';
+import 'package:fit_connect/widgets/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 

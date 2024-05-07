@@ -1,7 +1,7 @@
-import 'package:fit_connect/screens/profile.dart';
+import 'package:fit_connect/widgets/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:fit_connect/screens/home.dart';
+import 'package:fit_connect/widgets/home/home.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class Navigation extends StatelessWidget {
@@ -59,14 +59,15 @@ class Navigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         toolbarHeight: 70.0,
-        title: const Row(
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Fit Connect',
                   style: TextStyle(
                     fontFamily: 'GothicA1',
@@ -76,16 +77,14 @@ class Navigation extends StatelessWidget {
                 ),
                 Text(
                   'Home',
-                  style: TextStyle(
-                    fontFamily: 'GothicA1',
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: Color.fromARGB(255, 112, 112, 112),
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(fontSize: 16),
                 ),
               ],
             ),
-            Row(
+            const Row(
               children: [
                 Icon(FeatherIcons.bell),
                 SizedBox(width: 16),

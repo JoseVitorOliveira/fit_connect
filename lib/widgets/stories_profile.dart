@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fit_connect/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -176,30 +177,22 @@ class _ProfileState extends State<StoriesProfile> {
             height: 10,
           ),
           const SizedBox(height: 4),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Sobre:',
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: "GothicA1",
-                fontWeight: FontWeight.w600,
-                color: Colors.black,
-              ),
-            ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Sobre:',
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      fontSize: 18,
+                    )),
           ),
           const SizedBox(height: 0),
-          const Padding(
-            padding: EdgeInsets.only(left: 10, right: 10, top: 0),
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, top: 0),
             child: Text(
               'Quem é Neymar Jr? Para o cego é a luz. Para o faminto é o pão. Para o enfermo é a cura. Se o Neymar tem 100 fãs, eu sou um deles. Se o Neymar tem 10 fãs, eu sou um deles. Se o Neymar tem 1 fã, eu sou esse fã. Se o Neymar não tem fãs, eu não existo. ',
               textAlign: TextAlign.justify,
-              style: TextStyle(
-                fontFamily: "GothicA1",
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-                color: Color.fromARGB(255, 101, 101, 101),
-              ),
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    fontSize: 16,
+                  ),
             ),
           ),
         ],

@@ -1,4 +1,5 @@
-import 'package:fit_connect/screens/splash_screen.dart';
+import 'package:fit_connect/theme/theme.dart';
+import 'package:fit_connect/widgets/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,9 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      theme: AppTheme.lightTheme,
+      home: const SplashScreen(),
     );
   }
 }
