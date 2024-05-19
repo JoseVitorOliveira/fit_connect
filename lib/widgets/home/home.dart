@@ -3,6 +3,7 @@ import 'package:fit_connect/widgets/home/gyms_carousel.dart';
 import 'package:fit_connect/widgets/home/professional_list.dart';
 import 'package:fit_connect/widgets/section_title.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 class Home extends StatelessWidget {
   const Home({
@@ -11,8 +12,45 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
+    return Scaffold(
+      appBar: AppBar(
+        scrolledUnderElevation: 0,
+        toolbarHeight: 70.0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Fit Connect',
+                  style: TextStyle(
+                    fontFamily: 'GothicA1',
+                    fontSize: 26,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  'Home',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(fontSize: 16),
+                ),
+              ],
+            ),
+            const Row(
+              children: [
+                Icon(FeatherIcons.bell),
+                SizedBox(width: 16),
+                Icon(FeatherIcons.moreHorizontal),
+              ],
+            ),
+          ],
+        ),
+        automaticallyImplyLeading: false,
+      ),
+      body: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ProfessionalsList(),
